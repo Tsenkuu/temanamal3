@@ -21,7 +21,7 @@ $final_keywords = htmlspecialchars(isset($meta_keywords) ? $meta_keywords : $def
 $final_url = htmlspecialchars(isset($og_url) ? $og_url : (isset($canonical_url) ? $canonical_url : $default_url));
 $final_image = htmlspecialchars(isset($og_image) ? $og_image : $default_og_image);
 
-$current_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$current_path = (string) parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH);
 $base_dir = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
 if ($base_dir && $base_dir !== '/') {
     $current_path = substr($current_path, strlen($base_dir));

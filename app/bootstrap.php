@@ -15,8 +15,11 @@ spl_autoload_register(function ($class) {
     // Ambil nama class tanpa prefix
     $relative_class = substr($class, $len);
 
-    // Ganti separator namespace dengan directory separator
-    $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
+    // Ganti separator namespace dengan directory separator dan jadikan lowercase untuk foldernya (Case-Sensitive Linux)
+    $parts = explode('\\', $relative_class);
+    $class_name = array_pop($parts);
+    $path = implode('/', array_map('strtolower', $parts));
+    $file = $base_dir . ($path ? $path . '/' : '') . $class_name . '.php';
 
     // Jika file ada, require
     if (file_exists($file)) {

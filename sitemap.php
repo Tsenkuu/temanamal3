@@ -82,11 +82,11 @@ if ($type === 'index') {
     }
     elseif ($type === 'program') {
         // 3. URL Dinamis (Program)
-        $result_program = $mysqli->query("SELECT id, slug, created_at, updated_at FROM program ORDER BY created_at DESC");
+        $result_program = $mysqli->query("SELECT id, slug, created_at FROM program ORDER BY created_at DESC");
         if ($result_program) {
             while ($program = $result_program->fetch_assoc()) {
                 $identifier = !empty($program['slug']) ? $program['slug'] : $program['id'];
-                $last_modified = !empty($program['updated_at']) ? $program['updated_at'] : $program['created_at'];
+                $last_modified = $program['created_at'];
         echo "  <url>\n";
                 echo "    <loc>" . BASE_URL . "/program/" . htmlspecialchars($identifier) . "</loc>\n";
         echo "    <lastmod>" . date('c', strtotime($last_modified)) . "</lastmod>\n";
