@@ -15,7 +15,10 @@ $majalah = $result->fetch_assoc();
 $stmt->close();
 
 if (!$majalah) {
-    header("Location: majalah.php");
+    $error_code = '404';
+    $error_title = 'Majalah Tidak Ditemukan';
+    $error_message = 'Maaf, majalah yang Anda cari tidak ditemukan atau telah dihapus.';
+    include __DIR__ . '/includes/templates/error.php';
     exit();
 }
 

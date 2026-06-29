@@ -57,6 +57,10 @@ class Router {
         // Masalahnya index.php dipanggil JIKA file tidak ada.
         
         http_response_code(404);
-        echo "404 Not Found";
+        $error_code = '404';
+        $error_title = 'Halaman Tidak Ditemukan';
+        $error_message = 'Maaf, rute atau halaman yang Anda cari tidak dapat ditemukan di server kami.';
+        include __DIR__ . '/../../includes/templates/error.php';
+        exit();
     }
 }

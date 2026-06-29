@@ -6,7 +6,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (!rate_limit_request('donation_submit', 6, 300)) {
         http_response_code(429);
-        exit('Terlalu banyak percobaan donasi. Silakan tunggu sebentar lalu coba lagi.');
+        $error_code = '429';
+        $error_title = 'Terlalu Banyak Permintaan';
+        $error_message = 'Anda telah melakukan terlalu banyak percobaan donasi. Silakan tunggu sebentar sebelum mencoba lagi.';
+        include __DIR__ . '/includes/templates/error.php';
+        exit();
     }
 
     // 1. Ambil & Sanitasi Data
@@ -26,7 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($nama_donatur === '' || !validate_phone_number($kontak_donatur) || $nominal < 1000 || $metode_pembayaran_id <= 0) {
         http_response_code(422);
-        exit('Data donasi belum lengkap atau tidak valid.');
+        $error_code = '422';
+        $error_title = 'Data Tidak Valid';
+        $error_message = 'Data donasi yang Anda kirim belum lengkap atau tidak valid. Pastikan semua form terisi dengan benar.';
+        include __DIR__ . '/includes/templates/error.php';
+        exit();
     }
     
     // 2. Generate Data Sistem

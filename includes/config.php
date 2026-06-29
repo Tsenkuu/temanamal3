@@ -23,7 +23,11 @@ try {
     // Tampilkan pesan error yang lebih ramah di produksi
     // dan log error yang detail untuk developer.
     error_log("Database Connection Error: " . $e->getMessage());
-    die("Terjadi masalah koneksi ke database. Silakan coba lagi nanti.");
+    $error_code = '500';
+    $error_title = 'Database Tidak Terhubung';
+    $error_message = 'Terjadi masalah koneksi ke database. Tim kami sedang menanganinya. Silakan coba lagi nanti.';
+    include __DIR__ . '/templates/error.php';
+    exit();
 }
 
 

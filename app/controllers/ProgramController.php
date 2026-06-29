@@ -47,7 +47,11 @@ class ProgramController {
 
             if (!$program) {
                 http_response_code(404);
-                die("Program tidak ditemukan.");
+                $error_code = '404';
+                $error_title = 'Program Tidak Ditemukan';
+                $error_message = 'Maaf, program donasi yang Anda cari tidak ditemukan. Mungkin sudah dihapus atau tautan salah.';
+                include __DIR__ . '/../../includes/templates/error.php';
+                exit();
             }
         }
 

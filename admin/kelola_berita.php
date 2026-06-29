@@ -79,6 +79,7 @@ function get_type_badge($type) {
     switch ($type) {
         case 'berita': return '<span class="px-2 py-1 text-xs font-semibold text-blue-800 bg-blue-100 rounded-full">Berita</span>';
         case 'opini': return '<span class="px-2 py-1 text-xs font-semibold text-purple-800 bg-purple-100 rounded-full">Opini</span>';
+        case 'kajian': return '<span class="px-2 py-1 text-xs font-semibold text-emerald-800 bg-emerald-100 rounded-full">Kajian</span>';
         default: return '<span class="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 rounded-full">Unknown</span>';
     }
 }

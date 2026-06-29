@@ -88,9 +88,8 @@ $result = $mysqli->query($query);
                                 <td><?= htmlspecialchars((string)$row['display_title']) ?></td>
                                 <td><?= date('d M Y H:i', strtotime($row['deleted_at'])) ?></td>
                                 <td>
-                                    <!-- Restore Form -->
                                     <form action="proses_restore.php" method="POST" class="d-inline">
-                                        <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+                                        <input type="hidden" name="csrf_token" value="<?= csrf_token() ?>">
                                         <input type="hidden" name="table" value="<?= $selected_table ?>">
                                         <input type="hidden" name="id" value="<?= $row['id'] ?>">
                                         <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Apakah Anda yakin ingin memulihkan data ini?');">
@@ -99,7 +98,7 @@ $result = $mysqli->query($query);
                                     </form>
                                     <!-- Delete Permanently Form -->
                                     <form action="proses_hapus_permanen.php" method="POST" class="d-inline">
-                                        <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+                                        <input type="hidden" name="csrf_token" value="<?= csrf_token() ?>">
                                         <input type="hidden" name="table" value="<?= $selected_table ?>">
                                         <input type="hidden" name="id" value="<?= $row['id'] ?>">
                                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('PERINGATAN: Aksi ini akan menghapus data beserta file gambarnya secara PERMANEN. Anda yakin?');">
