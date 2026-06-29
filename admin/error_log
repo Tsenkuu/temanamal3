@@ -1,0 +1,55 @@
+[24-May-2026 14:58:17 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Data too long for column 'tags' at row 1 in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php:104
+Stack trace:
+#0 /home/ugytxbnr/temanamal.org/admin/tambah_berita.php(104): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 104
+[29-May-2026 17:47:22 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Data too long for column 'tags' at row 1 in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php:104
+Stack trace:
+#0 /home/ugytxbnr/temanamal.org/admin/tambah_berita.php(104): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 104
+[29-May-2026 17:49:33 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Data too long for column 'tags' at row 1 in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php:104
+Stack trace:
+#0 /home/ugytxbnr/temanamal.org/admin/tambah_berita.php(104): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 104
+[29-May-2026 17:51:38 Asia/Jakarta] PHP Warning:  Trying to access array offset on value of type null in /home/ugytxbnr/temanamal.org/admin/kelola_program.php on line 17
+[29-May-2026 17:58:03 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Data too long for column 'tags' at row 1 in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php:104
+Stack trace:
+#0 /home/ugytxbnr/temanamal.org/admin/tambah_berita.php(104): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 104
+[29-May-2026 17:58:51 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Data too long for column 'tags' at row 1 in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php:104
+Stack trace:
+#0 /home/ugytxbnr/temanamal.org/admin/tambah_berita.php(104): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 104
+[29-May-2026 18:00:13 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Data too long for column 'tags' at row 1 in /home/ugytxbnr/temanamal.org/admin/edit_berita.php:83
+Stack trace:
+#0 /home/ugytxbnr/temanamal.org/admin/edit_berita.php(83): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/ugytxbnr/temanamal.org/admin/edit_berita.php on line 83
+[29-May-2026 20:06:56 Asia/Jakarta] PHP Deprecated:  Implicit conversion from float 867.1875 to int loses precision in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 19
+[29-May-2026 20:06:56 Asia/Jakarta] PHP Deprecated:  Implicit conversion from float 867.1875 to int loses precision in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 33
+[30-May-2026 06:11:04 Asia/Jakarta] PHP Warning:  Undefined array key "type" in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 70
+[30-May-2026 06:11:04 Asia/Jakarta] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 70
+[30-May-2026 06:11:04 Asia/Jakarta] PHP Warning:  Undefined array key "judul" in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 71
+[30-May-2026 06:11:04 Asia/Jakarta] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 71
+[30-May-2026 06:11:04 Asia/Jakarta] PHP Warning:  Undefined array key "teras_berita" in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 72
+[30-May-2026 06:11:04 Asia/Jakarta] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 72
+[30-May-2026 06:11:04 Asia/Jakarta] PHP Warning:  Undefined array key "tubuh_berita" in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 73
+[30-May-2026 06:11:04 Asia/Jakarta] PHP Warning:  Undefined array key "sumber_gambar" in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 74
+[30-May-2026 06:11:04 Asia/Jakarta] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 74
+[30-May-2026 06:11:04 Asia/Jakarta] PHP Warning:  Undefined array key "tags" in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 75
+[30-May-2026 06:11:04 Asia/Jakarta] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 75
+[04-Jun-2026 07:39:42 Asia/Jakarta] PHP Deprecated:  Implicit conversion from float 673.5 to int loses precision in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 19
+[04-Jun-2026 07:39:42 Asia/Jakarta] PHP Deprecated:  Implicit conversion from float 673.5 to int loses precision in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 33
+[04-Jun-2026 07:57:31 Asia/Jakarta] PHP Warning:  Trying to access array offset on value of type null in /home/ugytxbnr/temanamal.org/admin/kelola_program.php on line 17
+[04-Jun-2026 09:03:31 Asia/Jakarta] PHP Deprecated:  Implicit conversion from float 902.8125 to int loses precision in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 19
+[04-Jun-2026 09:03:31 Asia/Jakarta] PHP Deprecated:  Implicit conversion from float 902.8125 to int loses precision in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 33
+[13-Jun-2026 16:43:25 Asia/Jakarta] PHP Deprecated:  Implicit conversion from float 800.5211726384365 to int loses precision in /home/ugytxbnr/temanamal.org/admin/edit_berita.php on line 15
+[13-Jun-2026 16:43:25 Asia/Jakarta] PHP Deprecated:  Implicit conversion from float 800.5211726384365 to int loses precision in /home/ugytxbnr/temanamal.org/admin/edit_berita.php on line 25
+[21-Jun-2026 09:54:15 Asia/Jakarta] PHP Deprecated:  Implicit conversion from float 793.5 to int loses precision in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 19
+[21-Jun-2026 09:54:15 Asia/Jakarta] PHP Deprecated:  Implicit conversion from float 793.5 to int loses precision in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 33
+[23-Jun-2026 14:42:49 Asia/Jakarta] PHP Deprecated:  Implicit conversion from float 675.3588516746412 to int loses precision in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 19
+[23-Jun-2026 14:42:49 Asia/Jakarta] PHP Deprecated:  Implicit conversion from float 675.3588516746412 to int loses precision in /home/ugytxbnr/temanamal.org/admin/tambah_berita.php on line 33

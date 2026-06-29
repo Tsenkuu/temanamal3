@@ -1,0 +1,6 @@
+[02-Jun-2026 20:30:53 Asia/Jakarta] PHP Warning:  require_once(chat_modal.php): Failed to open stream: No such file or directory in /home/ugytxbnr/temanamal.org/includes/templates/footer.php on line 123
+[02-Jun-2026 20:30:53 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required 'chat_modal.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/ugytxbnr/temanamal.org/includes/templates/footer.php:123
+Stack trace:
+#0 /home/ugytxbnr/temanamal.org/user/edit_profil.php(174): require_once()
+#1 {main}
+  thrown in /home/ugytxbnr/temanamal.org/includes/templates/footer.php on line 123

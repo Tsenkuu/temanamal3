@@ -1,0 +1,48 @@
+/* assets/css/chat-wa.css */
+.chat-message {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+}
+
+.chat-bubble {
+    background-color: #DCF8C6;
+    border-radius: 10px;
+    padding: 8px 12px;
+    display: inline-block;
+    word-break: break-word;
+    max-width: 80%;
+}
+
+.chat-bubble-user {
+    align-items: flex-end;
+}
+
+.chat-bubble-admin {
+    align-items: flex-start;
+}
+
+.chat-bubble-user .chat-bubble {
+    background-color: #DCF8C6; /* Warna gelembung chat user */
+    color: #000;
+    align-self: flex-end;
+}
+
+.chat-bubble-admin .chat-bubble {
+    background-color: #f0f0f0; /* Warna gelembung chat admin */
+    color: #000;
+    align-self: flex-start;
+}
+
+.chat-timestamp {
+    font-size: 0.7rem;
+    color: #777;
+    margin-top: 2px;
+    display: block;
+    text-align: right;
+}
+
+#chat-messages {
+    overflow-y: scroll;
+    height: 300px; /* Sesuaikan dengan tinggi yang diinginkan */
+}

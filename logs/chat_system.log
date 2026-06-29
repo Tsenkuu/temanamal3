@@ -1,0 +1,60 @@
+[2026-01-16 16:29:23] [ERROR] Fetch Error: Unknown column 'sender' in 'field list'
+[2026-01-16 16:29:24] [ERROR] Fetch Error: Unknown column 'sender' in 'field list'
+[2026-01-16 16:29:32] [INFO] Incoming Request from IP: 127.0.0.1
+[2026-01-16 16:29:32] [DEBUG] JSON data received: {"kode_user":"user_t6cn04o33b9","nomor_hp":"085806917113","pesan":"jjby","nama":"pixl"}
+[2026-01-16 16:29:32] [ERROR] Critical Error: Unknown column 'sender' in 'field list'
+[2026-01-16 16:29:32] [INFO] Incoming Request from IP: 127.0.0.1
+[2026-01-16 16:29:32] [DEBUG] JSON data received: null
+[2026-01-16 16:32:35] [ERROR] Fetch Error: Unknown column 'sender' in 'field list'
+[2026-01-16 16:32:45] [INFO] Auto-migration: Added column sender
+[2026-01-16 16:32:45] [INFO] Auto-migration: Added column direction
+[2026-01-16 16:32:45] [INFO] Incoming Request from IP: 127.0.0.1
+[2026-01-16 16:32:45] [DEBUG] JSON data received: {"kode_user":"user_t6cn04o33b9","nomor_hp":"085806917113","pesan":"asasa","nama":"pixl"}
+[2026-01-16 16:32:45] [ERROR] Critical Error: Unknown column 'message' in 'field list'
+[2026-01-16 16:32:45] [INFO] Incoming Request from IP: 127.0.0.1
+[2026-01-16 16:32:45] [DEBUG] JSON data received: null
+[2026-01-16 18:34:53] [ERROR] Fetch Error: Table 'lazismu3.pesan_user' doesn't exist
+[2026-01-16 18:35:04] [INFO] Incoming Request from IP: 127.0.0.1
+[2026-01-16 18:35:04] [DEBUG] JSON data received: {"kode_user":"user_t6cn04o33b9","nomor_hp":"085806917113","pesan":"halo","nama":"pixl"}
+[2026-01-16 18:35:04] [INFO] Message saved to DB. UserID: user_t6cn04o33b9
+[2026-01-16 18:35:06] [INFO] [Admin Reply] Saved to DB. UserID: user_t6cn04o33b9
+[2026-01-16 18:35:08] [INFO] Incoming Request from IP: 127.0.0.1
+[2026-01-16 18:35:08] [DEBUG] JSON data received: null
+[2026-01-16 18:42:59] [INFO] Incoming Request from IP: 127.0.0.1
+[2026-01-16 18:42:59] [DEBUG] JSON data received: {"kode_user":"user_t6cn04o33b9","nomor_hp":"085806917113","pesan":"halo","nama":"pixl"}
+[2026-01-16 18:42:59] [INFO] Message saved to DB. UserID: user_t6cn04o33b9
+[2026-01-16 18:43:01] [INFO] [Admin Reply] Saved to DB. UserID: user_t6cn04o33b9
+[2026-01-16 18:43:06] [INFO] Incoming Request from IP: 127.0.0.1
+[2026-01-16 18:43:06] [DEBUG] JSON data received: null
+[2026-01-16 18:57:11] [INFO] Incoming Request from IP: 127.0.0.1
+[2026-01-16 18:57:11] [DEBUG] JSON data received: {"kode_user":"user_t6cn04o33b9","nomor_hp":"085806917113","pesan":"asa","nama":"pixl"}
+[2026-01-16 18:57:11] [INFO] Message saved to DB. UserID: user_t6cn04o33b9
+[2026-01-16 18:57:16] [INFO] Incoming Request from IP: 127.0.0.1
+[2026-01-16 18:57:16] [DEBUG] JSON data received: null
+[2026-01-16 18:58:39] [INFO] Incoming Request from IP: 127.0.0.1
+[2026-01-16 18:58:39] [DEBUG] JSON data received: null
+[2026-01-16 18:58:40] [INFO] Incoming Request from IP: 127.0.0.1
+[2026-01-16 18:58:40] [DEBUG] JSON data received: {"kode_user":"user_t6cn04o33b9","nomor_hp":"085806917113","pesan":"z","nama":"pixl"}
+[2026-01-16 18:58:40] [INFO] Message saved to DB. UserID: user_t6cn04o33b9
+[2026-01-16 19:12:32] [INFO] Incoming Request from IP: 127.0.0.1
+[2026-01-16 19:12:32] [DEBUG] JSON data received: {"kode_user":"user_t6cn04o33b9","nomor_hp":"085806917113","pesan":"halo","nama":"pixl"}
+[2026-01-16 19:12:32] [INFO] Message saved to DB. UserID: user_t6cn04o33b9
+[2026-01-16 19:12:37] [INFO] Incoming Request from IP: 127.0.0.1
+[2026-01-16 19:12:37] [DEBUG] JSON data received: null
+[2026-01-16 19:17:07] [INFO] Incoming Request from IP: 127.0.0.1
+[2026-01-16 19:17:07] [DEBUG] JSON data received: {"kode_user":"user_t6cn04o33b9","nomor_hp":"085806917113","pesan":"fhe","nama":"pixl"}
+[2026-01-16 19:17:07] [INFO] Message saved to DB. UserID: user_t6cn04o33b9
+[2026-01-16 19:17:13] [INFO] Incoming Request from IP: 127.0.0.1
+[2026-01-16 19:17:13] [DEBUG] JSON data received: null
+[2026-01-16 19:33:19] [DEBUG] Data Masuk: {"kode_user":"user_t6cn04o33b9","nomor_hp":"085806917113","pesan":"syibal","nama":"pixl"}
+[2026-01-16 19:33:19] [INFO] Message saved. UserID: user_t6cn04o33b9
+[2026-01-16 19:33:24] [DEBUG] Data Masuk: {"nama":"pixl","nomor_hp":"085806917113","pesan":"syibal"}
+[2026-01-16 19:33:24] [INFO] Message saved. UserID: user_t6cn04o33b9
+[2026-01-16 19:47:06] [DEBUG] Data Masuk: {"kode_user":"user_t6cn04o33b9","nomor_hp":"085806917223","pesan":"halo","nama":"pixl"}
+[2026-01-16 19:47:06] [INFO] Message saved. UserID: user_t6cn04o33b9
+[2026-01-16 19:47:10] [DEBUG] Data Masuk: {"nama":"pixl","nomor_hp":"085806917223","pesan":"halo"}
+[2026-01-16 19:47:10] [INFO] Message saved. UserID: user_t6cn04o33b9
+[2026-01-16 20:13:11] [DEBUG] Data Masuk: {"nama":"pixel yoga pratama","nomor_hp":"085806917113","pesan":"asa"}
+[2026-01-16 20:13:11] [INFO] Message saved. UserID: user_t6cn04o33b9
+[2026-01-16 20:13:16] [DEBUG] Data Masuk: {"kode_user":null,"nomor_hp":"085806917113","pesan":"asa","nama":"pixel yoga pratama"}
+[2026-01-16 20:13:16] [INFO] Message saved. UserID: user_t6cn04o33b9
