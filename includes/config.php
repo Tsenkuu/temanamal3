@@ -290,4 +290,8 @@ function getHargaEmasIDR() {
 
     return $result;
 }
+
+// Jalankan Auto-Migration
+require_once __DIR__ . '/migration_runner.php';
+
 ?>
