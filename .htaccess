@@ -1,8 +1,10 @@
 # Aktifkan Rewrite Engine
 RewriteEngine On
 RewriteBase /
-Options -MultiViews
-Options -Indexes
+
+<IfModule mod_autoindex.c>
+    Options -Indexes
+</IfModule>
 
 # === Blokir file sensitif & eksekusi file berbahaya ===
 RewriteRule "(^|/)\.(env|git)" - [F,L,NC]
