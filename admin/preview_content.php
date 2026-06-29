@@ -20,10 +20,17 @@ $penulis = $_POST['penulis'] ?? 'Admin';
 $type = $_POST['type'] ?? 'berita';
 $tags = $_POST['tags'] ?? '';
 $sumber_gambar = $_POST['sumber_gambar'] ?? '';
+$editor = $_POST['editor'] ?? '';
 $created_at = date('Y-m-d H:i:s');
 $views = 0;
 
-$type_label = ($type == 'berita') ? 'Berita' : 'Opini';
+if ($type == 'berita') {
+    $type_label = 'Berita';
+} elseif ($type == 'opini') {
+    $type_label = 'Opini';
+} else {
+    $type_label = 'Kajian';
+}
 
 // Handle Gambar
 $gambar_url = BASE_URL . '/assets/uploads/berita/placeholder.png';
@@ -110,17 +117,35 @@ require_once '../includes/templates/header.php';
 
                 <h1 class="text-3xl md:text-4xl font-bold text-dark-text mb-4 leading-tight">
                     <?php echo htmlspecialchars($judul); ?></h1>
-                <div class="flex items-center justify-between text-gray-500 text-sm mb-6">
-                    <div class="flex items-center">
-                        <span>Oleh: <span
-                                class="font-semibold"><?php echo htmlspecialchars($penulis); ?></span></span>
-                        <span class="mx-2">&bull;</span>
-                        <span><?php echo date('d F Y', strtotime($created_at)); ?></span>
-                        <span class="mx-2">&bull;</span>
-                        <span><i class="bi bi-eye"></i> <?php echo number_format($views, 0, ',', '.'); ?> Dilihat</span>
+                <div class="flex items-center justify-between text-gray-500 text-sm mb-6 pb-4 border-b border-gray-100">
+                    <div class="flex items-center flex-wrap gap-y-2">
+                        <div class="flex items-center bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">
+                            <i class="bi bi-person-circle text-gray-400 mr-2"></i>
+                            <div class="flex flex-col">
+                                <span class="text-[10px] text-gray-400 font-medium uppercase tracking-wider leading-none mb-0.5">Penulis</span>
+                                <span class="font-semibold text-gray-700 leading-none"><?php echo htmlspecialchars($penulis); ?></span>
+                            </div>
+                        </div>
+                        
+                        <?php if (!empty($editor)): ?>
+                        <span class="mx-2 text-gray-300">&bull;</span>
+                        <div class="flex items-center bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">
+                            <i class="bi bi-pencil-square text-gray-400 mr-2"></i>
+                            <div class="flex flex-col">
+                                <span class="text-[10px] text-gray-400 font-medium uppercase tracking-wider leading-none mb-0.5">Editor</span>
+                                <span class="font-semibold text-gray-700 leading-none"><?php echo htmlspecialchars($editor); ?></span>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+
+                        <span class="mx-2 text-gray-300">&bull;</span>
+                        <div class="flex items-center text-gray-500">
+                            <i class="bi bi-calendar3 mr-1.5"></i> 
+                            <span><?php echo date('d F Y', strtotime($created_at)); ?></span>
+                        </div>
                     </div>
                     <span
-                        class="px-3 py-1 text-xs font-semibold rounded-full <?php echo $type == 'berita' ? 'text-blue-800 bg-blue-100' : 'text-purple-800 bg-purple-100'; ?>">
+                        class="px-3 py-1 text-xs font-semibold rounded-full <?php echo $type == 'berita' ? 'text-blue-800 bg-blue-100' : ($type == 'opini' ? 'text-purple-800 bg-purple-100' : 'text-emerald-800 bg-emerald-100'); ?>">
                         <?php echo htmlspecialchars($type_label); ?>
                     </span>
                 </div>

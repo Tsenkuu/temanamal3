@@ -72,6 +72,11 @@ class ProgramController {
         $stmt_count->execute([$program['id']]);
         $total_donatur = $stmt_count->fetch()['total'];
 
+        // Kabar Program (Update Program)
+        $stmt_kabar = $this->db->prepare("SELECT * FROM kabar_program WHERE id_program = ? ORDER BY created_at DESC");
+        $stmt_kabar->execute([$program['id']]);
+        $kabar_program = $stmt_kabar->fetchAll();
+
         // Metode Pembayaran (yang aktif)
         $stmt_metode = $this->db->query("SELECT * FROM metode_pembayaran WHERE status = 'aktif' ORDER BY kategori, nama_metode");
         $metode_raw = $stmt_metode->fetchAll();

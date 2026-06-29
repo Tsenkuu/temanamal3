@@ -154,6 +154,7 @@ foreach ($page_groups as $group => $titles) {
             <div x-show="activeAccordion === 'sistem'" x-collapse>
                 <div class="pl-11 pr-4 py-2 space-y-1">
                     <a href="pengaturan.php" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Pengaturan Website') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Identitas Web</a>
+                    <a href="keranjang_sampah.php" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Keranjang Sampah') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Keranjang Sampah</a>
                     <a href="statistik.php" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Statistik') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Statistik Detail</a>
                 </div>
             </div>

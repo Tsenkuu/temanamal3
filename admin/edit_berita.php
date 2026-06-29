@@ -48,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sumber_gambar = trim($_POST['sumber_gambar']);
     $tags = trim($_POST['tags']);
     $penulis = trim($_POST['penulis']);
+    $editor = trim($_POST['editor']);
     $status = trim($_POST['status']);
     $gambar_lama = $_POST['gambar_lama'];
     $gambar_baru = $gambar_lama;
@@ -78,7 +79,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (empty($errors)) {
-        $editor = $_SESSION['admin_nama_lengkap'] ?? 'Admin';
+        if (empty($editor)) {
+            $editor = $_SESSION['admin_nama_lengkap'] ?? 'Admin';
+        }
         $stmt = $mysqli->prepare("UPDATE berita SET type=?, judul=?, teras_berita=?, tubuh_berita=?, gambar=?, sumber_gambar=?, penulis=?, editor=?, tags=?, status=? WHERE id=?");
         $stmt->bind_param("ssssssssssi", $type, $judul, $teras_berita, $tubuh_berita, $gambar_baru, $sumber_gambar, $penulis, $editor, $tags, $status, $id_berita);
         if ($stmt->execute()) {
@@ -135,6 +138,7 @@ require_once 'templates/header_admin.php';
                 <select class="form-select" id="type" name="type" required>
                     <option value="berita" <?php if($berita['type'] == 'berita') echo 'selected'; ?>>Berita</option>
                     <option value="opini" <?php if($berita['type'] == 'opini') echo 'selected'; ?>>Opini</option>
+                    <option value="kajian" <?php if($berita['type'] == 'kajian') echo 'selected'; ?>>Kajian</option>
                 </select>
             </div>
 
@@ -181,11 +185,16 @@ require_once 'templates/header_admin.php';
                 <p class="text-xs text-gray-500 mt-1">Pisahkan setiap tag dengan koma (,)</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
                     <label for="penulis" class="form-label">Penulis</label>
                     <input type="text" class="form-input" id="penulis" name="penulis"
                         value="<?php echo htmlspecialchars($berita['penulis']); ?>">
+                </div>
+                <div>
+                    <label for="editor" class="form-label">Editor</label>
+                    <input type="text" class="form-input" id="editor" name="editor"
+                        value="<?php echo htmlspecialchars($berita['editor']); ?>">
                 </div>
                 <div>
                     <label for="status" class="form-label">Status</label>

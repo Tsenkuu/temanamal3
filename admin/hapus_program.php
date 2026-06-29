@@ -30,7 +30,7 @@ if (isset($_POST['id']) && !empty($_POST['id'])) {
     $stmt_select->close();
 
     // 2. Siapkan statement DELETE untuk menghapus data dari database
-    $stmt_delete = $mysqli->prepare("DELETE FROM program WHERE id = ?");
+    $stmt_delete = $mysqli->prepare("UPDATE program SET deleted_at = NOW() WHERE id = ?");
     $stmt_delete->bind_param("i", $id_program);
 
     // 3. Eksekusi statement delete
@@ -39,7 +39,7 @@ if (isset($_POST['id']) && !empty($_POST['id'])) {
         if ($nama_gambar && $nama_gambar != 'placeholder.png') {
             $file_path = '../assets/uploads/program/' . $nama_gambar;
             if (file_exists($file_path)) {
-                unlink($file_path); // Hapus file gambar dari server
+                // unlink($file_path); // Hapus file gambar dari server
             }
         }
         // Kirim pesan sukses

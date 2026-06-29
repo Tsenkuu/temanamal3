@@ -152,12 +152,37 @@ require_once __DIR__ . '/../../../includes/templates/header.php';
                 </div>
 
                 <!-- Tab Update -->
-                <div x-show="donasiTab === 'update'" class="bg-white rounded-[24px] p-6 md:p-8 lg:p-10 shadow-card text-center py-20" x-cloak>
-                    <div class="w-16 h-16 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="bi bi-megaphone text-2xl text-primary-orange"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-dark-text mb-2">Belum ada kabar terbaru</h3>
-                    <p class="text-gray-500 text-sm">Update terkait penyaluran donasi akan ditampilkan di sini.</p>
+                <div x-show="donasiTab === 'update'" class="bg-white rounded-[24px] p-6 md:p-8 lg:p-10 shadow-card" x-cloak>
+                    <?php if (!empty($kabar_program)): ?>
+                        <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+                            <?php foreach($kabar_program as $kabar): ?>
+                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <!-- Icon -->
+                                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-primary-orange text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 relative">
+                                    <i class="bi bi-megaphone-fill"></i>
+                                </div>
+                                <!-- Content -->
+                                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-slate-200 bg-white shadow-sm transition-all hover:shadow-md hover:border-orange-200 relative">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h4 class="font-bold text-slate-800 text-lg"><?= htmlspecialchars($kabar['judul_kabar']); ?></h4>
+                                    </div>
+                                    <time class="block text-sm font-medium text-slate-500 mb-3"><i class="bi bi-calendar3 mr-1"></i> <?= date('d M Y', strtotime($kabar['created_at'])); ?></time>
+                                    <div class="prose prose-sm max-w-none text-slate-600">
+                                        <?= $kabar['konten_kabar']; ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php else: ?>
+                        <div class="text-center py-10">
+                            <div class="w-16 h-16 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="bi bi-megaphone text-2xl text-primary-orange"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-dark-text mb-2">Belum ada kabar terbaru</h3>
+                            <p class="text-gray-500 text-sm">Update terkait penyaluran donasi akan ditampilkan di sini.</p>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
                 <!-- Share Section -->

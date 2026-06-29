@@ -9,7 +9,7 @@ if (!isset($_SESSION['admin_id'])) {
 // Hapus satu tugas berdasarkan ID
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id_tugas = (int)$_GET['id'];
-    $stmt = $mysqli->prepare("DELETE FROM tugas_pengambilan WHERE id = ?");
+    $stmt = $mysqli->prepare("UPDATE tugas_pengambilan SET deleted_at = NOW() WHERE id = ?");
     $stmt->bind_param("i", $id_tugas);
     if ($stmt->execute()) {
         $_SESSION['success_message'] = "Satu tugas berhasil dihapus.";

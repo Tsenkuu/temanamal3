@@ -10,7 +10,7 @@ if (!isset($_SESSION['admin_id'])) {
 // Cek apakah ada parameter ID untuk menghapus satu data
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id_transaksi = (int)$_GET['id'];
-    $stmt = $mysqli->prepare("DELETE FROM laporan_transaksi WHERE id = ?");
+    $stmt = $mysqli->prepare("UPDATE laporan_transaksi SET deleted_at = NOW() WHERE id = ?");
     $stmt->bind_param("i", $id_transaksi);
     if ($stmt->execute()) {
         $_SESSION['success_message'] = "Satu data transaksi berhasil dihapus.";

@@ -9,7 +9,7 @@ include '../includes/config.php';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    $stmt = $mysqli->prepare("DELETE FROM majalah WHERE id = ?");
+    $stmt = $mysqli->prepare("UPDATE majalah SET deleted_at = NOW() WHERE id = ?");
     $stmt->bind_param("i", $id);
     if ($stmt->execute()) {
         header("Location: kelola_majalah.php");

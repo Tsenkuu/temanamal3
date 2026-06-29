@@ -45,7 +45,7 @@ class NewsController {
     }
 
     public function detail($slug) {
-        $stmt = $this->db->prepare("SELECT *, CASE WHEN type = 'berita' THEN 'Berita' WHEN type = 'opini' THEN 'Opini' ELSE 'Artikel' END as type_label FROM berita WHERE slug = ? AND status = 'published'");
+        $stmt = $this->db->prepare("SELECT *, CASE WHEN type = 'berita' THEN 'Berita' WHEN type = 'opini' THEN 'Opini' WHEN type = 'kajian' THEN 'Kajian' ELSE 'Artikel' END as type_label FROM berita WHERE slug = ? AND status = 'published'");
         $stmt->execute([$slug]);
         $berita = $stmt->fetch();
 

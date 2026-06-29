@@ -18,7 +18,7 @@ require_valid_csrf();
 $id = isset($_POST['id']) ? (int)$_POST['id'] : 0;
 
 if ($id > 0) {
-    $stmt = $mysqli->prepare("DELETE FROM komentar WHERE id = ?");
+    $stmt = $mysqli->prepare("UPDATE komentar SET deleted_at = NOW() WHERE id = ?");
     $stmt->bind_param("i", $id);
     if($stmt->execute()){
         $_SESSION['message'] = 'Komentar berhasil dihapus.';

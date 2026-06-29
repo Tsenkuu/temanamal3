@@ -35,7 +35,7 @@ if ($status_filter !== 'semua' && in_array($status_filter, ['published', 'pendin
     $types .= 's';
 }
 
-if ($type_filter !== 'semua' && in_array($type_filter, ['berita', 'opini'])) {
+if ($type_filter !== 'semua' && in_array($type_filter, ['berita', 'opini', 'kajian'])) {
     $where_clauses[] = "type = ?";
     $params[] = $type_filter;
     $types .= 's';
@@ -55,7 +55,7 @@ $total_pages = ceil($total_results / $limit);
 $stmt_total->close();
 
 // Query untuk mengambil data per halaman
-$sql_data = "SELECT id, judul, slug, gambar, penulis, status, type, created_at " . $sql_base . $sql_where . " ORDER BY created_at DESC LIMIT ? OFFSET ?";
+$sql_data = "SELECT id, judul, slug, gambar, penulis, editor, status, type, created_at " . $sql_base . $sql_where . " ORDER BY created_at DESC LIMIT ? OFFSET ?";
 $params[] = $limit;
 $params[] = $offset;
 $types .= 'ii';
@@ -148,6 +148,7 @@ require_once 'templates/header_admin.php';
                             <option value="semua" <?php if ($type_filter == 'semua') echo 'selected'; ?>>Semua Tipe</option>
                             <option value="berita" <?php if ($type_filter == 'berita') echo 'selected'; ?>>Berita</option>
                             <option value="opini" <?php if ($type_filter == 'opini') echo 'selected'; ?>>Opini</option>
+                            <option value="kajian" <?php if ($type_filter == 'kajian') echo 'selected'; ?>>Kajian</option>
                         </select>
                     </div>
                     <div class="shrink-0 self-end">
@@ -190,6 +191,10 @@ require_once 'templates/header_admin.php';
                         </h3>
                         <p class="text-sm text-slate-500 flex items-center gap-1">
                             <i class="bi bi-person-circle"></i> <?php echo htmlspecialchars($berita['penulis']); ?> 
+                            <?php if(!empty($berita['editor'])): ?>
+                                <span class="mx-1">&bull;</span>
+                                <i class="bi bi-pencil"></i> <?php echo htmlspecialchars($berita['editor']); ?>
+                            <?php endif; ?>
                             <span class="mx-1">&bull;</span>
                             <i class="bi bi-calendar3"></i> <?php echo date('d M Y', strtotime($berita['created_at'])); ?>
                         </p>

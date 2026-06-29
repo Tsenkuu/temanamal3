@@ -21,7 +21,7 @@ if (isset($_POST['id']) && !empty($_POST['id'])) {
     $id_amil = (int)$_POST['id'];
 
     // Siapkan statement DELETE untuk menghapus data dari database
-    $stmt_delete = $mysqli->prepare("DELETE FROM amil WHERE id = ?");
+    $stmt_delete = $mysqli->prepare("UPDATE amil SET deleted_at = NOW() WHERE id = ?");
     $stmt_delete->bind_param("i", $id_amil);
 
     // Eksekusi statement delete

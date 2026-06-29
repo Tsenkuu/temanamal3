@@ -13,7 +13,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id_kotak = (int)$_GET['id'];
 
     // Siapkan statement DELETE untuk keamanan
-    $stmt = $mysqli->prepare("DELETE FROM kotak_infak WHERE id = ?");
+    $stmt = $mysqli->prepare("UPDATE kotak_infak SET deleted_at = NOW() WHERE id = ?");
     $stmt->bind_param("i", $id_kotak);
 
     // Eksekusi statement

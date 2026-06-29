@@ -29,13 +29,13 @@ if (isset($_POST['id']) && !empty($_POST['id'])) {
         $nama_file_untuk_dihapus = $slider['nama_file'];
 
         // Hapus data dari database
-        $stmt_delete = $mysqli->prepare("DELETE FROM slider_images WHERE id = ?");
+        $stmt_delete = $mysqli->prepare("UPDATE slider_images SET deleted_at = NOW() WHERE id = ?");
         $stmt_delete->bind_param("i", $id_slider);
         if ($stmt_delete->execute()) {
             // Hapus file fisik dari server
             $file_path = '../assets/images/' . $nama_file_untuk_dihapus;
             if (file_exists($file_path)) {
-                unlink($file_path);
+                // unlink($file_path);
             }
             $_SESSION['success_message'] = "Gambar slider berhasil dihapus.";
         } else {

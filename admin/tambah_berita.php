@@ -100,9 +100,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $slug = create_unique_slug($judul, $mysqli);
         $status = (isset($_POST['action']) && $_POST['action'] === 'pending') ? 'pending' : 'published';
         $penulis_asli = trim($_POST['penulis'] ?? $penulis);
+        $editor_asli = trim($_POST['editor'] ?? $penulis);
         
         $stmt = $mysqli->prepare("INSERT INTO berita (type, judul, slug, teras_berita, tubuh_berita, gambar, sumber_gambar, penulis, editor, tags, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssssssss", $type, $judul, $slug, $teras_berita, $tubuh_berita, $nama_gambar, $sumber_gambar, $penulis_asli, $penulis, $tags, $status);
+        $stmt->bind_param("sssssssssss", $type, $judul, $slug, $teras_berita, $tubuh_berita, $nama_gambar, $sumber_gambar, $penulis_asli, $editor_asli, $tags, $status);
         if ($stmt->execute()) {
             $_SESSION['success_message'] = ($status === 'pending') ? "Berita berhasil disimpan sebagai pending." : "Berita baru berhasil dipublikasikan.";
             header("Location: kelola_berita.php");
@@ -149,6 +150,9 @@ require_once 'templates/header_admin.php';
                                 <option value="opini"
                                     <?php echo (isset($_POST['type']) && $_POST['type'] == 'opini') ? 'selected' : ''; ?>>
                                     Opini</option>
+                                <option value="kajian"
+                                    <?php echo (isset($_POST['type']) && $_POST['type'] == 'kajian') ? 'selected' : ''; ?>>
+                                    Kajian</option>
                             </select>
                         </div>
                         <div>
@@ -194,6 +198,13 @@ require_once 'templates/header_admin.php';
                             placeholder="Contoh: Budi Santoso"
                             value="<?php echo isset($_POST['penulis']) ? htmlspecialchars($_POST['penulis']) : ''; ?>">
                         <p class="text-xs text-gray-500 mt-1">Kosongkan jika ingin menggunakan nama Anda sebagai penulis.</p>
+                    </div>
+                    <div class="mb-4">
+                        <label for="editor" class="form-label">Editor</label>
+                        <input type="text" class="form-input" id="editor" name="editor"
+                            placeholder="Contoh: Andi Wijaya"
+                            value="<?php echo isset($_POST['editor']) ? htmlspecialchars($_POST['editor']) : htmlspecialchars($penulis); ?>">
+                        <p class="text-xs text-gray-500 mt-1">Nama editor yang memeriksa artikel ini.</p>
                     </div>
                     <div>
                         <label for="tags" class="form-label">Tags</label>

@@ -123,6 +123,11 @@ if ($stmt_priority) {
                         
                         <div class="h-8 w-px bg-slate-200 mx-1"></div>
 
+                        <a href="kelola_kabar_program.php?id=<?php echo $program['id']; ?>"
+                            class="w-10 h-10 rounded-xl flex items-center justify-center bg-emerald-50 text-emerald-600 hover:bg-emerald-100 transition-colors" title="Kelola Kabar Terbaru">
+                            <i class="bi bi-megaphone text-lg"></i>
+                        </a>
+
                         <a href="edit_program.php?id=<?php echo $program['id']; ?>"
                             class="w-10 h-10 rounded-xl flex items-center justify-center bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors" title="Edit">
                             <i class="bi bi-pencil-square text-lg"></i>

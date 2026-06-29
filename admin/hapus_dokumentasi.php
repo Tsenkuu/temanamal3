@@ -13,10 +13,10 @@ if ($id > 0) {
     if ($data) {
         // Hapus file gambar
         $file_path = "../assets/uploads/dokumentasi/" . $data['gambar'];
-        if (file_exists($file_path)) unlink($file_path);
+        if (file_exists($file_path)) // unlink($file_path);
         
         // Hapus data di database
-        $stmt_del = $mysqli->prepare("DELETE FROM dokumentasi_kegiatan WHERE id = ?");
+        $stmt_del = $mysqli->prepare("UPDATE dokumentasi_kegiatan SET deleted_at = NOW() WHERE id = ?");
         $stmt_del->bind_param("i", $id);
         if ($stmt_del->execute()) {
             $_SESSION['success_message'] = "Dokumentasi berhasil dihapus.";

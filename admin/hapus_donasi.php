@@ -18,14 +18,14 @@ function hapusSatuDonasi($mysqli, $id) {
     $stmt_select->close();
 
     // Hapus dari database
-    $stmt_delete = $mysqli->prepare("DELETE FROM donasi WHERE id = ?");
+    $stmt_delete = $mysqli->prepare("UPDATE donasi SET deleted_at = NOW() WHERE id = ?");
     $stmt_delete->bind_param("i", $id);
     if ($stmt_delete->execute()) {
         // Jika berhasil, hapus file bukti jika ada
         if ($donasi && !empty($donasi['bukti_pembayaran'])) {
             $file_path = '../assets/uploads/bukti/' . $donasi['bukti_pembayaran'];
             if (file_exists($file_path)) {
-                unlink($file_path);
+                // unlink($file_path);
             }
         }
         return true;

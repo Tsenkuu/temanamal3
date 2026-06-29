@@ -16,7 +16,7 @@ require_valid_csrf();
 
 if (isset($_POST['id']) && !empty($_POST['id'])) {
     $id_riwayat = (int)$_POST['id'];
-    $stmt = $mysqli->prepare("DELETE FROM riwayat_pengambilan WHERE id = ?");
+    $stmt = $mysqli->prepare("UPDATE riwayat_pengambilan SET deleted_at = NOW() WHERE id = ?");
     $stmt->bind_param("i", $id_riwayat);
     if ($stmt->execute()) {
         $_SESSION['success_message'] = "Riwayat pengambilan berhasil dihapus.";

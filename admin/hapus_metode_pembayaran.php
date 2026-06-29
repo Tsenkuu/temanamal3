@@ -26,14 +26,14 @@ if (isset($_POST['id']) && !empty($_POST['id'])) {
     $stmt_select->close();
 
     // Hapus dari database
-    $stmt_delete = $mysqli->prepare("DELETE FROM metode_pembayaran WHERE id = ?");
+    $stmt_delete = $mysqli->prepare("UPDATE metode_pembayaran SET deleted_at = NOW() WHERE id = ?");
     $stmt_delete->bind_param("i", $id_metode);
     if ($stmt_delete->execute()) {
         // Jika berhasil, hapus file gambar QRIS jika ada
         if ($metode && !empty($metode['gambar'])) {
             $file_path = '../assets/images/qris/' . $metode['gambar'];
             if (file_exists($file_path)) {
-                unlink($file_path);
+                // unlink($file_path);
             }
         }
         $_SESSION['success_message'] = "Metode pembayaran berhasil dihapus.";
