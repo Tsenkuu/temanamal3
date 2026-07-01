@@ -41,7 +41,7 @@ class NewsController {
         ];
 
         extract($data);
-        require_once __DIR__ . '/../views/news/index.php';
+        global $mysqli; require_once __DIR__ . '/../views/news/index.php';
     }
 
     public function detail($slug) {
@@ -88,6 +88,6 @@ class NewsController {
         ];
 
         extract($data);
-        require_once __DIR__ . '/../views/news/detail.php';
+        global $mysqli; require_once __DIR__ . '/../views/news/detail.php';
     }
 }

@@ -233,7 +233,7 @@ require_once __DIR__ . '/../../../includes/templates/header.php';
                         </div>
 
                         <!-- Form Donasi -->
-                        <form action="<?= BASE_URL ?>/proses_donasi.php" method="POST" class="space-y-5">
+                        <form action="<?= BASE_URL ?>/proses_donasi" method="POST" class="space-y-5">
                             <?= csrf_field() ?>
                             <input type="hidden" name="id_program" value="<?= $program['id'] ?>">
 

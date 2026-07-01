@@ -29,7 +29,7 @@ if ($base_dir && $base_dir !== '/') {
 
 // Logika User
 $is_logged_in = isset($_SESSION['user_id']) || isset($_SESSION['admin_id']) || isset($_SESSION['amil_id']);
-$dashboard_link = isset($_SESSION['admin_id']) ? BASE_URL . '/admin/dashboard.php' : (isset($_SESSION['amil_id']) ? BASE_URL . '/amil/dashboard.php' : BASE_URL . '/user/dashboard.php');
+$dashboard_link = isset($_SESSION['admin_id']) ? BASE_URL . '/admin/dashboard' : (isset($_SESSION['amil_id']) ? BASE_URL . '/amil/dashboard' : BASE_URL . '/user/dashboard');
 ?>
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
@@ -211,7 +211,7 @@ $dashboard_link = isset($_SESSION['admin_id']) ? BASE_URL . '/admin/dashboard.ph
                         <?php else: ?>
                             <a href="<?php echo BASE_URL; ?>/login" class="text-sm font-semibold text-gray-600 hover:text-primary-orange">Masuk</a>
                         <?php endif; ?>
-                        <a href="<?php echo BASE_URL; ?>/donasi" class="px-5 py-2 bg-primary-orange text-white text-sm font-bold rounded-full hover:bg-orange-600 shadow-md transition">Donasi</a>
+                        <a href="<?php echo BASE_URL; ?>/program" class="px-5 py-2 bg-primary-orange text-white text-sm font-bold rounded-full hover:bg-orange-600 shadow-md transition">Donasi</a>
                     </div>
                 </div>
             </div>

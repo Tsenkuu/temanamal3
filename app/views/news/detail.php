@@ -166,7 +166,7 @@ require_once __DIR__ . '/../../../includes/templates/header.php';
                         </div>
                         <h3 class="text-2xl font-display font-bold mb-3 leading-tight">Mari Wujudkan Harapan Mereka</h3>
                         <p class="text-white/80 text-sm mb-6 leading-relaxed">Setiap donasi Anda adalah langkah nyata kebaikan untuk yang membutuhkan.</p>
-                        <a href="<?= BASE_URL ?>/donasi" class="block w-full bg-white text-primary-orange text-center rounded-xl py-3.5 font-bold text-sm hover:bg-orange-50 transition-colors shadow-sm">
+                        <a href="<?= BASE_URL ?>/program" class="block w-full bg-white text-primary-orange text-center rounded-xl py-3.5 font-bold text-sm hover:bg-orange-50 transition-colors shadow-sm">
                             Donasi Sekarang
                         </a>
                     </div>

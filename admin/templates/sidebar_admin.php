@@ -48,7 +48,7 @@ foreach ($page_groups as $group => $titles) {
     <div class="flex-1 overflow-y-auto py-6 px-4 space-y-1 custom-scrollbar" x-data="{ activeAccordion: '<?php echo $active_group; ?>' }">
         
         <!-- Dashboard -->
-        <a href="dashboard.php" class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 <?php echo ($page_title == 'Dashboard Admin') ? 'bg-primary-orange text-white shadow-lg shadow-orange-500/30' : 'hover:bg-slate-800 hover:text-white'; ?>">
+        <a href="dashboard" class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 <?php echo ($page_title == 'Dashboard Admin') ? 'bg-primary-orange text-white shadow-lg shadow-orange-500/30' : 'hover:bg-slate-800 hover:text-white'; ?>">
             <i class="bi bi-grid-1x2-fill text-lg"></i>
             <span class="font-medium">Dashboard</span>
         </a>
@@ -69,9 +69,9 @@ foreach ($page_groups as $group => $titles) {
             </button>
             <div x-show="activeAccordion === 'donasi'" x-collapse>
                 <div class="pl-11 pr-4 py-2 space-y-1">
-                    <a href="konfirmasi_donasi.php" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Konfirmasi Donasi') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Konfirmasi Donasi</a>
-                    <a href="riwayat_donasi.php" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Riwayat Donasi') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Riwayat Donasi</a>
-                    <a href="kelola_laporan.php" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Laporan & Impor Data') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Laporan & Impor</a>
+                    <a href="konfirmasi_donasi" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Konfirmasi Donasi') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Konfirmasi Donasi</a>
+                    <a href="riwayat_donasi" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Riwayat Donasi') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Riwayat Donasi</a>
+                    <a href="kelola_laporan" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Laporan & Impor Data') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Laporan & Impor</a>
                 </div>
             </div>
         </div>
@@ -88,12 +88,12 @@ foreach ($page_groups as $group => $titles) {
             </button>
             <div x-show="activeAccordion === 'konten'" x-collapse>
                 <div class="pl-11 pr-4 py-2 space-y-1">
-                    <a href="kelola_program.php" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Kelola Program Donasi') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Program Donasi</a>
-                    <a href="kelola_berita.php" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Kelola Berita') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Berita & Artikel</a>
-                    <a href="kelola_dokumentasi.php" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Kelola Dokumentasi Kegiatan') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Dokumentasi</a>
-                    <a href="kelola_majalah.php" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Kelola Majalah') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Majalah (PDF)</a>
-                    <a href="kelola_slider.php" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Kelola Slider Halaman Depan') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Banner Slider</a>
-                    <a href="kelola_komentar.php" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Kelola Komentar') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Moderasi Komentar</a>
+                    <a href="kelola_program" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Kelola Program Donasi') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Program Donasi</a>
+                    <a href="kelola_berita" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Kelola Berita') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Berita & Artikel</a>
+                    <a href="kelola_dokumentasi" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Kelola Dokumentasi Kegiatan') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Dokumentasi</a>
+                    <a href="kelola_majalah" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Kelola Majalah') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Majalah (PDF)</a>
+                    <a href="kelola_slider" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Kelola Slider Halaman Depan') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Banner Slider</a>
+                    <a href="kelola_komentar" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Kelola Komentar') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Moderasi Komentar</a>
                 </div>
             </div>
         </div>
@@ -110,10 +110,10 @@ foreach ($page_groups as $group => $titles) {
             </button>
             <div x-show="activeAccordion === 'kotak'" x-collapse>
                 <div class="pl-11 pr-4 py-2 space-y-1">
-                    <a href="kelola_kotak_infak.php" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Kelola Kotak Infak') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Data Kotak</a>
-                    <a href="kelola_tugas.php" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Penugasan Amil') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Penugasan Amil</a>
-                    <a href="riwayat_pengambilan.php" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Riwayat Pengambilan Kotak Infak') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Riwayat Ambil</a>
-                    <a href="peta_kotak_infak.php" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Peta Navigasi Kotak Infak') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Peta Sebaran (Maps)</a>
+                    <a href="kelola_kotak_infak" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Kelola Kotak Infak') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Data Kotak</a>
+                    <a href="kelola_tugas" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Penugasan Amil') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Penugasan Amil</a>
+                    <a href="riwayat_pengambilan" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Riwayat Pengambilan Kotak Infak') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Riwayat Ambil</a>
+                    <a href="peta_kotak_infak" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Peta Navigasi Kotak Infak') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Peta Sebaran (Maps)</a>
                 </div>
             </div>
         </div>
@@ -134,9 +134,9 @@ foreach ($page_groups as $group => $titles) {
             </button>
             <div x-show="activeAccordion === 'manajemen'" x-collapse>
                 <div class="pl-11 pr-4 py-2 space-y-1">
-                    <a href="kelola_amil.php" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Kelola Amil') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Data Amil</a>
-                    <a href="kelola_user.php" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Kelola Donatur & Blast WA') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">User & Blast WA</a>
-                    <a href="kelola_pembayaran.php" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Kelola Metode Pembayaran') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Metode Bayar</a>
+                    <a href="kelola_amil" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Kelola Amil') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Data Amil</a>
+                    <a href="kelola_user" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Kelola Donatur & Blast WA') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">User & Blast WA</a>
+                    <a href="kelola_pembayaran" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Kelola Metode Pembayaran') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Metode Bayar</a>
                 </div>
             </div>
         </div>
@@ -153,9 +153,9 @@ foreach ($page_groups as $group => $titles) {
             </button>
             <div x-show="activeAccordion === 'sistem'" x-collapse>
                 <div class="pl-11 pr-4 py-2 space-y-1">
-                    <a href="pengaturan.php" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Pengaturan Website') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Identitas Web</a>
-                    <a href="keranjang_sampah.php" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Keranjang Sampah') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Keranjang Sampah</a>
-                    <a href="statistik.php" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Statistik') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Statistik Detail</a>
+                    <a href="pengaturan" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Pengaturan Website') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Identitas Web</a>
+                    <a href="keranjang_sampah" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Keranjang Sampah') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Keranjang Sampah</a>
+                    <a href="statistik" class="block py-2 text-sm transition-colors <?php echo ($page_title == 'Statistik') ? 'text-primary-orange font-medium' : 'text-slate-400 hover:text-white'; ?>">Statistik Detail</a>
                 </div>
             </div>
         </div>
@@ -164,7 +164,7 @@ foreach ($page_groups as $group => $titles) {
 
     <!-- Sidebar Footer / Logout -->
     <div class="p-4 border-t border-slate-800 shrink-0">
-        <a href="../logout.php" class="flex items-center justify-center gap-2 w-full py-3 px-4 bg-slate-800 hover:bg-red-500/10 text-slate-300 hover:text-red-500 rounded-xl transition-colors font-medium">
+        <a href="../logout" class="flex items-center justify-center gap-2 w-full py-3 px-4 bg-slate-800 hover:bg-red-500/10 text-slate-300 hover:text-red-500 rounded-xl transition-colors font-medium">
             <i class="bi bi-power"></i> Keluar
         </a>
     </div>

@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'], $_POST['id_
     $mysqli->begin_transaction();
     try {
         // Ambil detail donasi untuk notifikasi dan update program
-        $stmt_get = $mysqli->prepare("SELECT nominal, id_program, nama_donatur, invoice_id FROM donasi WHERE id = ?");
+        $stmt_get = $mysqli->prepare("SELECT nominal, id_program, nama_donatur, invoice_id, kontak_donatur FROM donasi WHERE id = ?");
         $stmt_get->bind_param("i", $id_donasi);
         $stmt_get->execute();
         $donasi = $stmt_get->get_result()->fetch_assoc();
@@ -40,14 +40,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'], $_POST['id_
         $mysqli->commit();
         $_SESSION['success_message'] = "Donasi berhasil dikonfirmasi.";
 
-        // Kirim Notifikasi WhatsApp ke Admin
+        // Kirim Notifikasi WhatsApp
         if ($donasi) {
-            $pesan_notifikasi = "✅ *Donasi Dikonfirmasi*\n\n" .
+            // Notifikasi ke Admin
+            $pesan_admin = "✅ *Donasi Dikonfirmasi*\n\n" .
                                 "Anda telah berhasil mengonfirmasi donasi:\n\n" .
                                 "*Invoice ID:* " . $donasi['invoice_id'] . "\n" .
                                 "*Nama Donatur:* " . $donasi['nama_donatur'] . "\n" .
                                 "*Nominal:* Rp " . number_format($donasi['nominal'], 0, ',', '.');
-            kirimNotifikasiWA(ADMIN_WA_NUMBER, $pesan_notifikasi);
+            kirimNotifikasiWA(ADMIN_WA_NUMBER, $pesan_admin);
+            
+            // Notifikasi ke Donatur
+            if (!empty($donasi['kontak_donatur'])) {
+                $pesan_donatur = "Alhamdulillah ✅\n\n" .
+                                 "Terima kasih, donasi Anda telah kami terima dan berhasil dikonfirmasi:\n\n" .
+                                 "*Invoice:* " . $donasi['invoice_id'] . "\n" .
+                                 "*Nominal:* Rp " . number_format($donasi['nominal'], 0, ',', '.') . "\n\n" .
+                                 "Semoga Allah memberikan pahala atas apa yang Anda berikan, menjadikannya penyuci bagi Anda, dan memberikan keberkahan pada harta yang tersisa.\n\n" .
+                                 "_Lazismu Tulungagung_";
+                kirimNotifikasiWA($donasi['kontak_donatur'], $pesan_donatur);
+            }
         }
 
     } catch (Exception $e) {

@@ -29,7 +29,7 @@ class ProgramController {
             ['id' => 'dakwah', 'name' => 'Dakwah']
         ];
 
-        require_once __DIR__ . '/../views/program/index.php';
+        global $mysqli; require_once __DIR__ . '/../views/program/index.php';
     }
 
     public function detail($slug) {
@@ -89,6 +89,6 @@ class ProgramController {
             $metode_pembayaran[$m['kategori']][] = $m;
         }
 
-        require_once __DIR__ . '/../views/program/detail.php';
+        global $mysqli; require_once __DIR__ . '/../views/program/detail.php';
     }
 }

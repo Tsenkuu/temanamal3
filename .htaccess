@@ -1,60 +1,15 @@
-# Aktifkan Rewrite Engine
 RewriteEngine On
 RewriteBase /
 
-<IfModule mod_autoindex.c>
-    Options -Indexes
-</IfModule>
+# Jangan rewrite jika file atau folder asli ada
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
 
-# === Blokir file sensitif & eksekusi file berbahaya ===
-RewriteRule "(^|/)\.(env|git)" - [F,L,NC]
-RewriteRule ^(?:logs|includes|vendor)/.*\.(log|sql|env|ini)$ - [F,L,NC]
-RewriteRule ^assets/uploads/.*\.(?:php[0-9]?|phtml|phar|cgi|pl|py|sh)$ - [F,L,NC]
-RewriteRule ^.*\.(?:sql|bak|config|dist|fla|inc|ini|log|psd|sh|swp)$ - [F,L,NC]
-
-# === Aturan untuk URL Bersih (tanpa .php) ===
-RewriteRule ^chat_send\.php$ chat_send_secure.php [L,QSA]
-RewriteRule ^beranda$ index.php [L]
-RewriteRule ^program$ program.php [L]
-RewriteRule ^majalah$ majalah.php [L]
-RewriteRule ^berita$ berita.php [L]
-RewriteRule ^search$ search.php [L]
-RewriteRule ^laporan$ laporan.php [L]
-RewriteRule ^donasi$ donasi.php [L]
-RewriteRule ^login$ login.php [L]
-RewriteRule ^registrasi$ register.php [L]
-RewriteRule ^tentang_kami$ tentang_kami.php [L]
-RewriteRule ^personalia$ personalia.php [L]
-RewriteRule ^kalkulator_zakat$ kalkulator_zakat.php [L]
-
-# === Aturan untuk Laporan dengan parameter ===
-# /laporan/jenis/2025-09 → /laporan.php?jenis=jenis&period=2025-09-01
-RewriteRule ^laporan/([A-Za-z]+)/([0-9]{4}-[0-9]{2})/?$ laporan.php?jenis=$1&periode=$2-01 [L,QSA]
-
-# === Aturan untuk URL Detail dengan SLUG ===
-# Halaman detail program: /program/slug
-RewriteRule ^program/([^/]+)/?$ detail_program.php?id=$1 [L,QSA]
-
-# Halaman detail berita: /berita/slug
-RewriteRule ^berita/([^/]+)/?$ detail_berita.php?slug=$1 [L,QSA]
-# Halaman detail majalah: /majalah/id
-RewriteRule ^majalah/([0-9]+)/?$ detail_majalah.php?id=$1 [L,QSA]
-# Halaman History Pembayaran: /history/token
-RewriteRule ^history/([a-zA-Z0-9]+)/?$ history.php?token=$1 [L,QSA]
-
-# === Sitemap XML ===
-RewriteRule ^sitemap\.xml$ sitemap.php [L]
-RewriteRule ^sitemap-([a-z]+)\.xml$ sitemap.php?type=$1 [L]
-
-
-
-
-# ====================================================
-
-# --- Konfigurasi Halaman Error Kustom ---
-ErrorDocument 403 /error.php?code=403
-ErrorDocument 404 /error.php?code=404
-ErrorDocument 500 /error.php?code=500
+# === Hapus ekstensi .php secara dinamis jika file .php-nya ada ===
+RewriteCond %{REQUEST_URI} !\.php$ [NC]
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php [L,QSA]
 
 # --- Default handler agar request diarahkan ke index.php ---
 RewriteCond %{REQUEST_FILENAME} !-f

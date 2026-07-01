@@ -61,8 +61,8 @@ $stmt_wa->close();
 
 define('ADMIN_WA_NUMBER', $admin_wa_number_from_db);
 // Local wa-api service (default). Sesuaikan jika Anda menjalankan di host/port lain.
-define('API_WA_BASE_URL', getenv('API_WA_BASE_URL') ?: 'https://apiwa.invtulungagung.my.id'); // Base URL server Node.js (wa-api)
-define('API_WA_URL',      API_WA_BASE_URL . '/kirim-pesan');
+define('API_WA_BASE_URL', getenv('API_WA_BASE_URL') ?: ($isLocal ? 'http://localhost:3002' : 'https://apiwa.invtulungagung.my.id')); // Base URL server Node.js (wa-api)
+define('API_WA_URL',      API_WA_BASE_URL . '/send');
 define('API_KALKULATOR_URL', API_WA_BASE_URL . '/kalkulator-details');
 define('API_WA_RESET_URL',  API_WA_BASE_URL . '/reset-sesi');
 // Pastikan nilai token ini sama dengan `API_WA_TOKEN` di file .env pada folder wa-api
@@ -149,9 +149,9 @@ function getAdminWhatsappNumber() {
  * @return array Response dari API.
  */
 function kirimNotifikasiWA($nomor, $pesan) {
-    return callWhatsappAPI('/kirim-pesan', 'POST', [
-        'nomor' => $nomor,
-        'pesan' => $pesan,
+    return callWhatsappAPI('/send', 'POST', [
+        'to' => $nomor,
+        'message' => $pesan,
     ]);
 }
 

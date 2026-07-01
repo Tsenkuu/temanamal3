@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const jumlahZakatEl = document.getElementById('jumlah-zakat');
         const nisabInfoEl = document.getElementById('nisab-info');
         const tunaikanBtn = document.getElementById('tunaikan-btn');
-        const baseUrl = '../donasi.php'; // Integrasi ke halaman donasi utama
+        const baseUrl = '<?php echo BASE_URL; ?>/program'; // Arahkan ke daftar program
 
         if (hasil.wajibZakat) {
             jumlahZakatEl.textContent = formatRupiah(hasil.zakat);

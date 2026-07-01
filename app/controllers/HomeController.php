@@ -71,7 +71,7 @@ class HomeController {
         ];
 
         extract($data);
-        require_once __DIR__ . '/../views/home/index.php';
+        global $mysqli; require_once __DIR__ . '/../views/home/index.php';
     }
 
     private function getSetting($name, $default = '') {

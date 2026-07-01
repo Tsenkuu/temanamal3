@@ -11,29 +11,32 @@ if (!isset($_SESSION['admin_id'])) {
 }
 
 // Proses upload gambar baru (tidak berubah)
+require_once '../includes/image_converter.php';
+
+// Proses upload gambar baru
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['gambar_slider'])) {
-    // ... (logika upload Anda tetap di sini)
     if (isset($_FILES['gambar_slider']) && $_FILES['gambar_slider']['error'] == 0) {
-        $target_dir = "../assets/images/";
-        $nama_file = time() . '_' . basename($_FILES["gambar_slider"]["name"]);
-        $target_file = $target_dir . $nama_file;
-        $file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        $target_dir = realpath("../assets/images") ?: "../assets/images";
+        $file_type = strtolower(pathinfo($_FILES["gambar_slider"]["name"], PATHINFO_EXTENSION));
 
         if ($_FILES["gambar_slider"]["size"] > 2000000) {
             $_SESSION['error_message'] = "Ukuran file terlalu besar (maks 2MB).";
         } elseif (!in_array($file_type, ['jpg', 'png', 'jpeg', 'gif', 'webp'])) {
             $_SESSION['error_message'] = "Hanya format JPG, JPEG, PNG, GIF, & WEBP yang diizinkan.";
         } else {
-            if (move_uploaded_file($_FILES["gambar_slider"]["tmp_name"], $target_file)) {
+            // Upload & convert to WebP
+            $result = upload_and_convert($_FILES['gambar_slider'], $target_dir, 82);
+            if ($result && $result['success']) {
+                $nama_file = $result['filename'];
                 $mysqli->query("UPDATE slider_images SET urutan = urutan + 1");
                 $stmt = $mysqli->prepare("INSERT INTO slider_images (nama_file, urutan) VALUES (?, 0)");
                 $stmt->bind_param("s", $nama_file);
                 if ($stmt->execute()) {
-                    $_SESSION['success_message'] = "Gambar slider berhasil ditambahkan.";
+                    $_SESSION['success_message'] = "Gambar slider berhasil ditambahkan (dikonversi ke WebP).";
                 }
                 $stmt->close();
             } else {
-                $_SESSION['error_message'] = "Gagal mengunggah file.";
+                $_SESSION['error_message'] = "Gagal memproses gambar: " . ($result['message'] ?? 'Unknown error');
             }
         }
     }

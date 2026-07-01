@@ -10,7 +10,6 @@ $truncate = static function (?string $text, int $limit = 120): string {
 };
 
 $program_link   = static fn(array $p): string => BASE_URL . '/program/' . rawurlencode((string)(!empty($p['slug']) ? $p['slug'] : ($p['id'] ?? '')));
-$donation_link  = static fn(array $p): string => BASE_URL . '/donasi?id_program=' . (int)($p['id'] ?? 0);
 $news_link      = static fn(array $n): string => BASE_URL . '/berita/' . rawurlencode((string)(!empty($n['slug']) ? $n['slug'] : ($n['id'] ?? '')));
 $program_image  = static fn(array $p): ?string => !empty($p['gambar']) ? BASE_URL . '/assets/uploads/program/' . rawurlencode((string)$p['gambar']) : null;
 $news_image     = static fn(array $n): ?string => !empty($n['gambar']) ? BASE_URL . '/assets/uploads/berita/' . rawurlencode((string)$n['gambar']) : null;
@@ -54,7 +53,7 @@ require_once __DIR__ . '/../../../includes/templates/header.php';
                         Salurkan kepedulian Anda untuk mereka yang membutuhkan. Bersama TemanAmal, setiap donasi Anda dikelola secara transparan, aman, dan berdampak nyata.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="<?= BASE_URL ?>/donasi" class="bg-primary-orange text-white rounded-2xl px-8 py-4 font-bold text-lg hover:bg-orange-600 transform hover:-translate-y-1 transition-all shadow-[0_20px_40px_-15px_rgba(251,130,1,0.5)] text-center flex items-center justify-center gap-2">
+                        <a href="<?= BASE_URL ?>/program" class="bg-primary-orange text-white rounded-2xl px-8 py-4 font-bold text-lg hover:bg-orange-600 transform hover:-translate-y-1 transition-all shadow-[0_20px_40px_-15px_rgba(251,130,1,0.5)] text-center flex items-center justify-center gap-2">
                             <i class="bi bi-heart-fill"></i> Donasi Sekarang
                         </a>
                         <a href="<?= BASE_URL ?>/kalkulator_zakat" class="bg-white text-slate-700 border border-slate-200 rounded-2xl px-8 py-4 font-bold text-lg hover:bg-slate-50 hover:border-slate-300 transition-all text-center shadow-sm flex items-center justify-center gap-2">
@@ -74,21 +73,71 @@ require_once __DIR__ . '/../../../includes/templates/header.php';
                 </div>
                 
                 <!-- Hero Image -->
-                <div class="order-1 lg:order-2 relative w-full aspect-[4/3] md:aspect-[16/10] lg:aspect-[4/3] rounded-[32px] overflow-hidden shadow-[0_20px_50px_-20px_rgba(0,0,0,0.15)] ring-1 ring-black/5">
-                    <?php if (!empty($hero_slides)): ?>
-                        <img src="/assets/gambardepan/amal.jpeg" alt="Hero Image" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" loading="lazy">
-                    <?php else: ?>
-                        <div class="w-full h-full bg-gradient-to-tr from-orange-200 to-green-100 flex items-center justify-center">
-                            <span class="text-white font-bold text-2xl">TemanAmal</span>
+                <?php
+                $slides_urls = [];
+                if (!empty($hero_slides)) {
+                    foreach ($hero_slides as $slide) {
+                        $slides_urls[] = BASE_URL . '/assets/images/' . $slide['nama_file'];
+                    }
+                } else {
+                    $slides_urls[] = BASE_URL . '/assets/gambardepan/amal.jpeg';
+                }
+                ?>
+                <div class="order-1 lg:order-2 relative w-full aspect-[4/3] md:aspect-[16/10] lg:aspect-[4/3] rounded-[32px] overflow-hidden shadow-[0_20px_50px_-20px_rgba(0,0,0,0.15)] ring-1 ring-black/5 bg-slate-900"
+                     x-data="heroSlider(<?= htmlspecialchars(json_encode($slides_urls), ENT_QUOTES, 'UTF-8') ?>)">
+                    
+                    <!-- Slides -->
+                    <template x-for="(slide, index) in slides" :key="index">
+                        <div x-show="activeSlide === index" 
+                             x-transition:enter="transition ease-out duration-700"
+                             x-transition:enter-start="opacity-0 scale-95"
+                             x-transition:enter-end="opacity-100 scale-100"
+                             x-transition:leave="transition ease-in duration-500"
+                             x-transition:leave-start="opacity-100 scale-100"
+                             x-transition:leave-end="opacity-0 scale-105"
+                             class="absolute inset-0 w-full h-full">
+                            <img :src="slide" alt="Hero Image" class="w-full h-full object-cover" loading="lazy">
                         </div>
-                    <?php endif; ?>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 right-0 p-8">
-                        <div class="inline-block bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl p-4 text-white">
-                            <h3 class="font-bold text-xl mb-1">Berbagi Kasih</h3>
-                            <p class="text-white/90 text-sm font-medium">Mari tebarkan kebaikan hari ini.</p>
+                    </template>
+                    
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
+                    
+                    <!-- Captions & Control overlay -->
+                    <div class="absolute bottom-0 left-0 right-0 p-8 flex flex-col gap-4">
+                        <div class="flex justify-between items-end">
+                            <!-- Elegant Caption -->
+                            <div class="inline-block bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 text-white max-w-[80%]">
+                                <h3 class="font-bold text-xl mb-1">Berbagi Kasih</h3>
+                                <p class="text-white/90 text-sm font-medium">Mari tebarkan kebaikan hari ini bersama Lazismu Tulungagung.</p>
+                            </div>
+                            
+                            <!-- Slide Indicator Dots -->
+                            <template x-if="slides.length > 1">
+                                <div class="flex gap-1.5 pb-2">
+                                    <template x-for="(slide, index) in slides" :key="index">
+                                        <button @click="activeSlide = index" 
+                                                :class="activeSlide === index ? 'bg-orange-500 w-6' : 'bg-white/50 w-2'"
+                                                class="h-2 rounded-full transition-all duration-300"></button>
+                                    </template>
+                                </div>
+                            </template>
                         </div>
                     </div>
+                    
+                    <!-- Navigation Arrows -->
+                    <template x-if="slides.length > 1">
+                        <div class="absolute inset-x-4 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none">
+                            <button @click="activeSlide = activeSlide === 0 ? slides.length - 1 : activeSlide - 1" 
+                                    class="w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-md flex items-center justify-center text-white pointer-events-auto transition-colors">
+                                <i class="bi bi-chevron-left text-lg"></i>
+                            </button>
+                            <button @click="activeSlide = (activeSlide + 1) % slides.length" 
+                                    class="w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-md flex items-center justify-center text-white pointer-events-auto transition-colors">
+                                <i class="bi bi-chevron-right text-lg"></i>
+                            </button>
+                        </div>
+                    </template>
                 </div>
             </div>
         </div>
@@ -173,7 +222,7 @@ require_once __DIR__ . '/../../../includes/templates/header.php';
                     </div>
                 </div>
 
-                <a href="<?= $donation_link($featured) ?>" class="block w-full bg-primary-orange text-white text-center rounded-2xl py-4 font-bold text-lg hover:bg-orange-600 transition-all shadow-[0_10px_20px_-10px_rgba(251,130,1,0.5)] flex items-center justify-center gap-2">
+                <a href="<?= $program_link($featured) ?>" class="block w-full bg-primary-orange text-white text-center rounded-2xl py-4 font-bold text-lg hover:bg-orange-600 transition-all shadow-[0_10px_20px_-10px_rgba(251,130,1,0.5)] flex items-center justify-center gap-2">
                     <i class="bi bi-heart-fill"></i> Donasi Sekarang
                 </a>
             </div>
@@ -205,7 +254,7 @@ require_once __DIR__ . '/../../../includes/templates/header.php';
                             </div>
                             <div class="text-xs font-bold text-gray-400"><?= $progress_pct($prog) ?>%</div>
                         </div>
-                        <a href="<?= $donation_link($prog) ?>" class="block w-full border-2 border-primary-orange text-primary-orange text-center rounded-xl py-2.5 font-bold text-sm hover:bg-primary-orange hover:text-white transition-colors">
+                        <a href="<?= $program_link($prog) ?>" class="block w-full border-2 border-primary-orange text-primary-orange text-center rounded-xl py-2.5 font-bold text-sm hover:bg-primary-orange hover:text-white transition-colors">
                             Donasi
                         </a>
                     </div>
@@ -289,6 +338,21 @@ require_once __DIR__ . '/../../../includes/templates/header.php';
         </div>
     </section>
 
+    <script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('heroSlider', (initialSlides) => ({
+            activeSlide: 0,
+            slides: initialSlides,
+            init() {
+                if (this.slides.length > 1) {
+                    setInterval(() => {
+                        this.activeSlide = (this.activeSlide + 1) % this.slides.length;
+                    }, 5000);
+                }
+            }
+        }));
+    });
+    </script>
 </main>
 
 <?php require_once __DIR__ . '/../../../includes/templates/footer.php'; ?>

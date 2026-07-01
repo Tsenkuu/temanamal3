@@ -109,7 +109,7 @@ $current_path = $_SERVER['REQUEST_URI'];
         
         <!-- Center Floating Action Button -->
         <div class="absolute left-1/2 -translate-x-1/2 -top-10 z-[60]">
-            <a href="<?php echo BASE_URL; ?>/donasi" class="flex items-center justify-center w-[72px] h-[72px] bg-primary-orange text-white rounded-[24px] shadow-[0_15px_30px_-5px_rgba(251,130,1,0.5)] transform hover:scale-105 active:scale-95 transition-all border-[6px] border-white">
+            <a href="<?php echo BASE_URL; ?>/program" class="flex items-center justify-center w-[72px] h-[72px] bg-primary-orange text-white rounded-[24px] shadow-[0_15px_30px_-5px_rgba(251,130,1,0.5)] transform hover:scale-105 active:scale-95 transition-all border-[6px] border-white">
                 <i class="bi bi-heart-fill text-[28px]"></i>
             </a>
         </div>
@@ -137,7 +137,7 @@ $current_path = $_SERVER['REQUEST_URI'];
     </button>
 </div>
 
-<?php require_once '../chat_modal.php'; ?>
+<?php require_once __DIR__ . '/../../app/views/components/chat_modal.php'; ?>
 
 <!-- Scripts -->
 <script>
